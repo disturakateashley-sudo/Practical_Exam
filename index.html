@@ -1,0 +1,2253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISUFST Campus Directory | Acquaintance Party</title>
+
+<style>
+
+:root{
+    --purple:#6d28d9;
+    --purple-dark:#3b0764;
+    --purple-deep:#241044;
+    --purple-light:#8b5cf6;
+    --lavender:#ede9fe;
+    --soft:#f7f5ff;
+    --white:#ffffff;
+    --text:#241b35;
+    --muted:#756b85;
+    --border:#e7def7;
+    --pink:#ec4899;
+    --shadow:0 15px 35px rgba(75,35,120,.12);
+    --radius:20px;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Segoe UI",Arial,sans-serif;
+    color:var(--text);
+    line-height:1.6;
+    background:
+        radial-gradient(circle at 5% 10%,rgba(139,92,246,.14),transparent 25%),
+        radial-gradient(circle at 95% 15%,rgba(236,72,153,.10),transparent 25%),
+        linear-gradient(135deg,#faf8ff,#f5f1ff 50%,#ffffff);
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    bottom:0;
+    width:275px;
+    padding:24px 16px;
+    background:
+        linear-gradient(180deg,#2e1065 0%,#4c1d95 50%,#6d28d9 100%);
+    color:white;
+    box-shadow:8px 0 35px rgba(44,15,80,.18);
+    z-index:1000;
+    overflow-y:auto;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:8px 10px 25px;
+    text-decoration:none;
+    color:white;
+}
+
+.brand img{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #ddd6fe;
+    box-shadow:0 5px 18px rgba(0,0,0,.2);
+}
+
+.brand-text h1{
+    font-size:.92rem;
+    line-height:1.25;
+}
+
+.brand-text span{
+    display:block;
+    font-size:.68rem;
+    color:#ddd6fe;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-top:4px;
+}
+
+.nav-label{
+    font-size:.68rem;
+    color:#c4b5fd;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    margin:14px 12px 8px;
+}
+
+.nav-list{
+    list-style:none;
+}
+
+.nav-list a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:#f5f3ff;
+    text-decoration:none;
+    padding:12px 14px;
+    border-radius:13px;
+    margin:5px 0;
+    font-weight:600;
+    font-size:.88rem;
+    transition:.25s ease;
+    cursor:pointer;
+}
+
+.nav-list a:hover,
+.nav-list a.active{
+    background:rgba(255,255,255,.16);
+    color:white;
+    transform:translateX(4px);
+    box-shadow:inset 3px 0 #f0abfc;
+}
+
+.nav-icon{
+    width:25px;
+    text-align:center;
+    font-size:1.05rem;
+}
+
+.party-badge{
+    margin:20px 4px 0;
+    padding:16px;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:16px;
+    background:rgba(255,255,255,.10);
+    backdrop-filter:blur(10px);
+}
+
+.party-badge strong{
+    display:block;
+    color:#f5d0fe;
+    font-size:.84rem;
+}
+
+.party-badge span{
+    font-size:.74rem;
+    color:#ddd6fe;
+}
+
+/* MAIN */
+
+.main{
+    margin-left:275px;
+    min-height:100vh;
+}
+
+.topbar{
+    position:sticky;
+    top:0;
+    z-index:900;
+    background:rgba(255,255,255,.88);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid var(--border);
+    padding:15px 38px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.topbar h2{
+    font-size:1rem;
+    color:var(--purple-dark);
+}
+
+.status{
+    font-size:.76rem;
+    color:#6d28d9;
+    background:#ede9fe;
+    padding:8px 13px;
+    border-radius:30px;
+    font-weight:700;
+}
+
+/* HERO */
+
+.page-banner{
+    margin:30px 38px 0;
+    padding:50px 40px;
+    border-radius:28px;
+    color:white;
+    background:
+        linear-gradient(135deg,#3b0764,#6d28d9 55%,#8b5cf6);
+    box-shadow:0 20px 45px rgba(76,29,149,.25);
+    position:relative;
+    overflow:hidden;
+}
+
+.page-banner::before{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    background:rgba(255,255,255,.08);
+    right:-100px;
+    top:-130px;
+}
+
+.page-banner::after{
+    content:"✦";
+    position:absolute;
+    right:8%;
+    bottom:-50px;
+    font-size:13rem;
+    color:rgba(255,255,255,.06);
+}
+
+.page-banner h2{
+    font-size:2.25rem;
+    text-transform:uppercase;
+    letter-spacing:.8px;
+    position:relative;
+    z-index:2;
+}
+
+.page-banner p{
+    color:#e9d5ff;
+    margin-top:7px;
+    position:relative;
+    z-index:2;
+}
+
+/* CONTENT */
+
+.container{
+    max-width:1300px;
+    margin:auto;
+    padding:40px 38px;
+}
+
+section{
+    margin-bottom:65px;
+}
+
+.section-title{
+    color:var(--purple-dark);
+    font-size:1.5rem;
+    display:flex;
+    align-items:center;
+    gap:13px;
+    margin-bottom:25px;
+}
+
+.section-title::before{
+    content:"";
+    width:7px;
+    height:28px;
+    background:linear-gradient(#8b5cf6,#c026d3);
+    border-radius:10px;
+}
+
+.section-title::after{
+    content:"";
+    height:2px;
+    width:60px;
+    background:#c4b5fd;
+    border-radius:4px;
+}
+
+/* PROFILE CARDS */
+
+.grid{
+    display:grid;
+    gap:24px;
+}
+
+.grid-1{
+    grid-template-columns:repeat(auto-fit,minmax(280px,380px));
+}
+
+.grid-2{
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+}
+
+.grid-4{
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+}
+
+.card{
+    background:rgba(255,255,255,.92);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    overflow:hidden;
+    text-align:center;
+    border:1px solid var(--border);
+    transition:.3s ease;
+    position:relative;
+}
+
+.card::before{
+    content:"";
+    height:5px;
+    width:100%;
+    display:block;
+    background:linear-gradient(90deg,#6d28d9,#a855f7,#ec4899);
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 22px 45px rgba(76,29,149,.18);
+}
+
+.card-img-wrapper{
+    width:100%;
+    height:260px;
+    background:linear-gradient(135deg,#ede9fe,#fdf4ff);
+    overflow:hidden;
+    padding:14px 14px 0;
+}
+
+.card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    border-radius:15px 15px 0 0;
+}
+
+.card-info{
+    padding:20px;
+}
+
+.card-info .title{
+    color:#9333ea;
+    font-weight:800;
+    font-size:.78rem;
+    text-transform:uppercase;
+    letter-spacing:.7px;
+}
+
+.card-info h3{
+    font-size:1.08rem;
+    color:var(--purple-dark);
+    margin:5px 0;
+}
+
+.card-info p.dept{
+    font-size:.83rem;
+    color:var(--muted);
+}
+
+/* FACULTY */
+
+.faculty-list{
+    list-style:none;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+    gap:18px;
+}
+
+.faculty-item{
+    background:rgba(255,255,255,.94);
+    padding:16px;
+    border-radius:17px;
+    box-shadow:var(--shadow);
+    display:flex;
+    align-items:center;
+    gap:15px;
+    border:1px solid var(--border);
+    border-left:5px solid #8b5cf6;
+    transition:.25s ease;
+}
+
+.faculty-item:hover{
+    transform:translateY(-5px);
+    border-left-color:#ec4899;
+}
+
+.faculty-item img{
+    width:67px;
+    height:67px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #ddd6fe;
+}
+
+.faculty-details .name{
+    font-weight:750;
+    color:var(--purple-dark);
+}
+
+.faculty-details .role{
+    font-size:.81rem;
+    color:var(--muted);
+}
+
+/* ACTIVITIES */
+
+.activities{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+}
+
+.activity-card{
+    background:rgba(255,255,255,.95);
+    border-radius:19px;
+    padding:23px;
+    box-shadow:var(--shadow);
+    border:1px solid var(--border);
+    border-top:5px solid #8b5cf6;
+    transition:.3s ease;
+}
+
+.activity-card:hover{
+    transform:translateY(-7px);
+    border-top-color:#ec4899;
+}
+
+.activity-icon{
+    width:50px;
+    height:50px;
+    border-radius:15px;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,#ede9fe,#fae8ff);
+    font-size:1.4rem;
+    margin-bottom:14px;
+}
+
+.activity-card h3{
+    color:var(--purple-dark);
+    font-size:1.05rem;
+    margin-bottom:5px;
+}
+
+.activity-card .date{
+    font-size:.76rem;
+    color:#9333ea;
+    font-weight:800;
+    text-transform:uppercase;
+}
+
+.activity-card p{
+    font-size:.85rem;
+    color:var(--muted);
+    margin-top:8px;
+}
+
+.activity-card.featured{
+    background:linear-gradient(145deg,#3b0764,#6d28d9);
+    color:white;
+    border-top-color:#f0abfc;
+}
+
+.activity-card.featured h3{
+    color:white;
+}
+
+.activity-card.featured p{
+    color:#e9d5ff;
+}
+
+.activity-card.featured .date{
+    color:#f5d0fe;
+}
+
+/* DOCUMENTATION */
+
+.documentation{
+    margin-top:35px;
+}
+
+.doc-intro{
+    background:linear-gradient(135deg,#f5f3ff,#faf5ff);
+    border-left:5px solid #8b5cf6;
+    padding:20px 22px;
+    border-radius:16px;
+    margin-bottom:24px;
+    box-shadow:0 8px 24px rgba(76,29,149,.08);
+}
+
+.doc-intro strong{
+    color:var(--purple-dark);
+}
+
+.doc-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+    gap:22px;
+}
+
+.doc-card{
+    background:rgba(255,255,255,.96);
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    border:1px solid var(--border);
+    transition:.3s ease;
+}
+
+.doc-card:hover{
+    transform:translateY(-7px);
+    box-shadow:0 20px 40px rgba(76,29,149,.16);
+}
+
+.doc-photo{
+    height:190px;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(139,92,246,.22),transparent 30%),
+        linear-gradient(135deg,#ede9fe,#faf5ff);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.drive-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:76px;
+    height:76px;
+    border-radius:50%;
+    background:white;
+    box-shadow:0 10px 25px rgba(76,29,149,.18);
+    text-decoration:none;
+    transition:.3s ease;
+    border:3px solid #ddd6fe;
+}
+
+.drive-btn:hover{
+    transform:scale(1.12) translateY(-4px);
+    box-shadow:0 15px 30px rgba(76,29,149,.25);
+    border-color:#8b5cf6;
+}
+
+.drive-btn svg{
+    width:38px;
+    height:38px;
+}
+
+.doc-content{
+    padding:20px;
+}
+
+.doc-content .date{
+    font-size:.74rem;
+    color:#9333ea;
+    font-weight:800;
+    text-transform:uppercase;
+}
+
+.doc-content h3{
+    color:var(--purple-dark);
+    margin:5px 0 8px;
+}
+
+.doc-content p{
+    color:var(--muted);
+    font-size:.84rem;
+    line-height:1.6;
+}
+
+/* HIDDEN SECTIONS */
+
+.view-section{
+    display:none;
+}
+
+.view-section.active{
+    display:block;
+}
+
+/* EMPTY VIEW */
+
+.directory-home{
+    display:none;
+}
+
+.directory-home.active{
+    display:block;
+}
+
+.directory-welcome{
+    background:linear-gradient(135deg,#f5f3ff,#faf5ff);
+    border:1px solid var(--border);
+    border-left:6px solid var(--purple-light);
+    border-radius:20px;
+    padding:25px;
+    margin-bottom:30px;
+    box-shadow:var(--shadow);
+}
+
+.directory-welcome h3{
+    color:var(--purple-dark);
+    margin-bottom:5px;
+}
+
+.directory-welcome p{
+    color:var(--muted);
+    font-size:.9rem;
+}
+
+/* FOOTER */
+
+footer{
+    background:linear-gradient(135deg,#2e1065,#4c1d95);
+    color:white;
+    text-align:center;
+    padding:27px 20px;
+    margin-top:20px;
+    border-top:4px solid #c084fc;
+}
+
+footer span{
+    color:#e9d5ff;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .sidebar{
+        width:230px;
+    }
+
+    .main{
+        margin-left:230px;
+    }
+
+    .topbar{
+        padding:13px 22px;
+    }
+
+    .page-banner{
+        margin:25px 22px 0;
+    }
+
+    .container{
+        padding:32px 22px;
+    }
+}
+
+@media(max-width:700px){
+
+    .sidebar{
+        position:relative;
+        width:100%;
+        height:auto;
+        padding:15px;
+    }
+
+    .brand{
+        padding-bottom:14px;
+    }
+
+    .nav-list{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:3px;
+    }
+
+    .party-badge{
+        display:none;
+    }
+
+    .main{
+        margin-left:0;
+    }
+
+    .topbar{
+        position:relative;
+        padding:13px 17px;
+        gap:10px;
+    }
+
+    .topbar h2{
+        font-size:.88rem;
+    }
+
+    .status{
+        font-size:.68rem;
+    }
+
+    .page-banner{
+        margin:16px;
+        padding:35px 25px;
+    }
+
+    .page-banner h2{
+        font-size:1.55rem;
+    }
+
+    .page-banner p{
+        font-size:.85rem;
+    }
+
+    .container{
+        padding:25px 16px;
+    }
+
+    .section-title{
+        font-size:1.25rem !important;
+    }
+
+    .faculty-list{
+        grid-template-columns:1fr;
+    }
+
+    .doc-grid{
+        grid-template-columns:1fr;
+    }
+
+    .doc-photo{
+        height:160px;
+    }
+}
+
+@media(max-width:450px){
+
+    .nav-list{
+        grid-template-columns:1fr;
+    }
+
+    .topbar{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .page-banner{
+        padding:30px 20px;
+    }
+
+    .page-banner h2{
+        font-size:1.35rem;
+    }
+
+    .card-img-wrapper{
+        height:240px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<aside class="sidebar">
+
+    <a href="#" class="brand" onclick="showView('all'); return false;">
+
+        <img src="isufst_logo.jpg" alt="ISUFST Logo">
+
+        <div class="brand-text">
+            <h1>Iloilo State University of Fisheries Science and Technology (ISUFST)</h1>
+            <span>San Enrique Campus</span>
+        </div>
+
+    </a>
+
+    <div class="nav-label">Campus Directory</div>
+
+    <ul class="nav-list">
+
+        <li>
+            <a href="#" class="nav-link active" data-view="all">
+                <span class="nav-icon">🏠</span>
+                All Directory
+            </a>
+        </li>
+
+        <li>
+            <a href="#" class="nav-link" data-view="university">
+                <span class="nav-icon">🏛️</span>
+                University Admin
+            </a>
+        </li>
+
+        <li>
+            <a href="#" class="nav-link" data-view="campus">
+                <span class="nav-icon">🏫</span>
+                Campus Admin
+            </a>
+        </li>
+
+        <li>
+            <a href="#" class="nav-link" data-view="deans">
+                <span class="nav-icon">🎓</span>
+                Deans
+            </a>
+        </li>
+
+        <li>
+            <a href="#" class="nav-link" data-view="faculty">
+                <span class="nav-icon">👥</span>
+                CICI Faculty & Staff
+            </a>
+        </li>
+
+    </ul>
+
+
+    <div class="nav-label">Acquaintance Party</div>
+
+    <ul class="nav-list">
+
+        <li>
+            <a href="#" class="nav-link" data-view="activities">
+                <span class="nav-icon">🎉</span>
+                Activities
+            </a>
+        </li>
+
+        <li>
+            <a href="#" class="nav-link" data-view="street">
+                <span class="nav-icon">💃</span>
+                Street Dance
+            </a>
+        </li>
+
+        <li>
+            <a href="#" class="nav-link" data-view="final">
+                <span class="nav-icon">🎭</span>
+                Final Performance
+            </a>
+        </li>
+
+        <li>
+            <a href="#" class="nav-link" data-view="laro">
+                <span class="nav-icon">🏆</span>
+                Laro ng Lahi
+            </a>
+        </li>
+
+        <li>
+            <a href="#" class="nav-link" data-view="lgbtq">
+                <span class="nav-icon">🌈</span>
+                LGBTQIA+ Activities
+            </a>
+        </li>
+
+        <li>
+            <a href="#" class="nav-link" data-view="mrms">
+                <span class="nav-icon">👑</span>
+                Mr. & Ms. Acquaintance
+            </a>
+        </li>
+
+        <li>
+            <a href="#" class="nav-link" data-view="documentation">
+                <span class="nav-icon">📸</span>
+                Documentation
+            </a>
+        </li>
+
+    </ul>
+
+
+    <div class="party-badge">
+
+        <strong>🎊 CICI Acquaintance Party</strong>
+
+        <span>
+            Rehearsals, competitions, performances,
+            and student activities.
+        </span>
+
+    </div>
+
+</aside>
+
+
+<main class="main">
+
+    <div class="topbar">
+
+        <h2 id="topTitle">
+            ISUFST Campus Organizational Directory
+        </h2>
+
+        <span class="status">
+            ● 2026 Campus Activities
+        </span>
+
+    </div>
+
+
+    <div class="page-banner">
+
+        <h2 id="bannerTitle">
+            Campus Organizational Directory
+        </h2>
+
+        <p id="bannerSubtitle">
+            Leadership, Deans, Faculty Members & Acquaintance Party Activities
+        </p>
+
+    </div>
+
+
+    <div class="container">
+
+
+        <!-- ALL DIRECTORY -->
+
+        <div id="view-all" class="directory-home active">
+
+            <div class="directory-welcome">
+
+                <h3>
+                    ISUFST Campus Directory
+                </h3>
+
+                <p>
+                    Select a section from the Campus Directory
+                    to view its information. The Acquaintance Party
+                    activities are separated below in the sidebar.
+                </p>
+
+            </div>
+
+
+            <section>
+
+                <h2 class="section-title">
+                    University Level
+                </h2>
+
+                <div class="grid grid-1">
+
+                    <article class="card">
+
+                        <div class="card-img-wrapper">
+
+                            <img
+                                src="Dr. Nordy D. Siason, Jr., CESO VI.png"
+                                alt="Dr. Nordy D. Siason, Jr., CESO VI">
+
+                        </div>
+
+                        <div class="card-info">
+
+                            <p class="title">
+                                University President
+                            </p>
+
+                            <h3>
+                                Dr. Nordy D. Siason, Jr., CESO VI
+                            </h3>
+
+                            <p class="dept">
+                                Office of the President
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <section>
+
+                <h2 class="section-title">
+                    Campus Level
+                </h2>
+
+                <div class="grid grid-2">
+
+                    <article class="card">
+
+                        <div class="card-img-wrapper">
+
+                            <img
+                                src="MichaelDizon.png"
+                                alt="Dr. Michael B. Dizon">
+
+                        </div>
+
+                        <div class="card-info">
+
+                            <p class="title">
+                                Campus Administrator
+                            </p>
+
+                            <h3>
+                                Dr. Michael B. Dizon
+                            </h3>
+
+                            <p class="dept">
+                                Office of Campus Administration
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card">
+
+                        <div class="card-img-wrapper">
+
+                            <img
+                                src="MrsMelbyParreño.jpg"
+                                alt="Mrs. Melby Parreño">
+
+                        </div>
+
+                        <div class="card-info">
+
+                            <p class="title">
+                                Administrative Officer
+                            </p>
+
+                            <h3>
+                                Mrs. Melby Parreño
+                            </h3>
+
+                            <p class="dept">
+                                Administrative Services Office
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <section>
+
+                <h2 class="section-title">
+                    Deans of Academic Units
+                </h2>
+
+                <div class="grid grid-4">
+
+                    <article class="card">
+
+                        <div class="card-img-wrapper">
+
+                            <img src="WendaPanes.jpg" alt="Dr. Wenda D. Panes">
+
+                        </div>
+
+                        <div class="card-info">
+
+                            <p class="title">Dean</p>
+
+                            <h3>Dr. Wenda D. Panes</h3>
+
+                            <p class="dept">
+                                College of Information & Computing Innovation (CICI)
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card">
+
+                        <div class="card-img-wrapper">
+
+                            <img src="JaniceChing.jpg" alt="Dr. Janice H. Ching">
+
+                        </div>
+
+                        <div class="card-info">
+
+                            <p class="title">Dean</p>
+
+                            <h3>Dr. Janice H. Ching</h3>
+
+                            <p class="dept">
+                                College of Business, Management & Sustainable Dev. (CBMSD)
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card">
+
+                        <div class="card-img-wrapper">
+
+                            <img src="NoliGerona.jpg" alt="Dr. Noli L. Gerona">
+
+                        </div>
+
+                        <div class="card-info">
+
+                            <p class="title">Dean</p>
+
+                            <h3>Dr. Noli L. Gerona</h3>
+
+                            <p class="dept">
+                                College of Agriculture (COA)
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="card">
+
+                        <div class="card-img-wrapper">
+
+                            <img src="ReneEstomo.jpg" alt="Dr. Rene T. Estomo">
+
+                        </div>
+
+                        <div class="card-info">
+
+                            <p class="title">Dean</p>
+
+                            <h3>Dr. Rene T. Estomo</h3>
+
+                            <p class="dept">
+                                College of Education (COED)
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <section>
+
+                <h2 class="section-title">
+                    College of Informatics and Computing Innovations (CICI) - Faculty & Staff
+                </h2>
+
+                <ul class="faculty-list">
+
+                    <li class="faculty-item">
+                        <img src="AllanDaveTagacay.jpg" alt="Prof. Allan Dave Tagacay">
+                        <div class="faculty-details">
+                            <div class="name">Prof. Allan Dave Tagacay</div>
+                            <div class="role">CICI Faculty</div>
+                        </div>
+                    </li>
+
+                    <li class="faculty-item">
+                        <img src="WeenaBulnes.jpg" alt="Dr. Weena Bulnes">
+                        <div class="faculty-details">
+                            <div class="name">Dr. Weena Bulnes</div>
+                            <div class="role">CICI Faculty</div>
+                        </div>
+                    </li>
+
+                    <li class="faculty-item">
+                        <img src="DythnDacudao.jpg" alt="Dr. Dythne Dacudao">
+                        <div class="faculty-details">
+                            <div class="name">Dr. Dythne Dacudao</div>
+                            <div class="role">CICI Faculty</div>
+                        </div>
+                    </li>
+
+                    <li class="faculty-item">
+                        <img src="IvanSelvestre.jpg" alt="Prof. Ivan Selvestre">
+                        <div class="faculty-details">
+                            <div class="name">Prof. Ivan Selvestre</div>
+                            <div class="role">CICI Faculty</div>
+                        </div>
+                    </li>
+
+                    <li class="faculty-item">
+                        <img src="AndreaDelosSantos.jpg" alt="Andrea Delos Santos">
+                        <div class="faculty-details">
+                            <div class="name">Ms. Andrea Delos Santos</div>
+                            <div class="role">CICI Staff</div>
+                        </div>
+                    </li>
+
+                    <li class="faculty-item">
+                        <img src="Michael.jpg" alt="Michael Borcillo">
+                        <div class="faculty-details">
+                            <div class="name">Mr. Michael Borcillo</div>
+                            <div class="role">CICI Staff</div>
+                        </div>
+                    </li>
+
+                    <li class="faculty-item">
+                        <img src="IanSugatan.jpg" alt="Ian Sugatan">
+                        <div class="faculty-details">
+                            <div class="name">Prof. Ian Sugatan</div>
+                            <div class="role">CICI Faculty</div>
+                        </div>
+                    </li>
+
+                </ul>
+
+            </section>
+
+        </div>
+
+
+        <!-- UNIVERSITY -->
+
+        <section id="view-university" class="view-section">
+
+            <h2 class="section-title">
+                University Level
+            </h2>
+
+            <div class="grid grid-1">
+
+                <article class="card">
+
+                    <div class="card-img-wrapper">
+
+                        <img
+                            src="Dr. Nordy D. Siason, Jr., CESO VI.png"
+                            alt="Dr. Nordy D. Siason, Jr., CESO VI">
+
+                    </div>
+
+                    <div class="card-info">
+
+                        <p class="title">
+                            University President
+                        </p>
+
+                        <h3>
+                            Dr. Nordy D. Siason, Jr., CESO VI
+                        </h3>
+
+                        <p class="dept">
+                            Office of the President
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- CAMPUS -->
+
+        <section id="view-campus" class="view-section">
+
+            <h2 class="section-title">
+                Campus Level
+            </h2>
+
+            <div class="grid grid-2">
+
+                <article class="card">
+
+                    <div class="card-img-wrapper">
+
+                        <img src="MichaelDizon.png" alt="Dr. Michael B. Dizon">
+
+                    </div>
+
+                    <div class="card-info">
+
+                        <p class="title">
+                            Campus Administrator
+                        </p>
+
+                        <h3>
+                            Dr. Michael B. Dizon
+                        </h3>
+
+                        <p class="dept">
+                            Office of Campus Administration
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="card-img-wrapper">
+
+                        <img src="MrsMelbyParreño.jpg" alt="Mrs. Melby Parreño">
+
+                    </div>
+
+                    <div class="card-info">
+
+                        <p class="title">
+                            Administrative Officer
+                        </p>
+
+                        <h3>
+                            Mrs. Melby Parreño
+                        </h3>
+
+                        <p class="dept">
+                            Administrative Services Office
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- DEANS -->
+
+        <section id="view-deans" class="view-section">
+
+            <h2 class="section-title">
+                Deans of Academic Units
+            </h2>
+
+            <div class="grid grid-4">
+
+                <article class="card">
+
+                    <div class="card-img-wrapper">
+                        <img src="WendaPanes.jpg" alt="Dr. Wenda D. Panes">
+                    </div>
+
+                    <div class="card-info">
+                        <p class="title">Dean</p>
+                        <h3>Dr. Wenda D. Panes</h3>
+                        <p class="dept">
+                            College of Information & Computing Innovation (CICI)
+                        </p>
+                    </div>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="card-img-wrapper">
+                        <img src="JaniceChing.jpg" alt="Dr. Janice H. Ching">
+                    </div>
+
+                    <div class="card-info">
+                        <p class="title">Dean</p>
+                        <h3>Dr. Janice H. Ching</h3>
+                        <p class="dept">
+                            College of Business, Management & Sustainable Dev. (CBMSD)
+                        </p>
+                    </div>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="card-img-wrapper">
+                        <img src="NoliGerona.jpg" alt="Dr. Noli L. Gerona">
+                    </div>
+
+                    <div class="card-info">
+                        <p class="title">Dean</p>
+                        <h3>Dr. Noli L. Gerona</h3>
+                        <p class="dept">
+                            College of Agriculture (COA)
+                        </p>
+                    </div>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="card-img-wrapper">
+                        <img src="ReneEstomo.jpg" alt="Dr. Rene T. Estomo">
+                    </div>
+
+                    <div class="card-info">
+                        <p class="title">Dean</p>
+                        <h3>Dr. Rene T. Estomo</h3>
+                        <p class="dept">
+                            College of Education (COED)
+                        </p>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- FACULTY -->
+
+        <section id="view-faculty" class="view-section">
+
+            <h2 class="section-title">
+                College of Informatics and Computing Innovations (CICI) - Faculty & Staff
+            </h2>
+
+            <ul class="faculty-list">
+
+                <li class="faculty-item">
+                    <img src="AllanDaveTagacay.jpg" alt="Prof. Allan Dave Tagacay">
+                    <div class="faculty-details">
+                        <div class="name">Prof. Allan Dave Tagacay</div>
+                        <div class="role">CICI Faculty</div>
+                    </div>
+                </li>
+
+                <li class="faculty-item">
+                    <img src="WeenaBulnes.jpg" alt="Dr. Weena Bulnes">
+                    <div class="faculty-details">
+                        <div class="name">Dr. Weena Bulnes</div>
+                        <div class="role">CICI Faculty</div>
+                    </div>
+                </li>
+
+                <li class="faculty-item">
+                    <img src="DythnDacudao.jpg" alt="Dr. Dythne Dacudao">
+                    <div class="faculty-details">
+                        <div class="name">Dr. Dythne Dacudao</div>
+                        <div class="role">CICI Faculty</div>
+                    </div>
+                </li>
+
+                <li class="faculty-item">
+                    <img src="IvanSelvestre.jpg" alt="Prof. Ivan Selvestre">
+                    <div class="faculty-details">
+                        <div class="name">Prof. Ivan Selvestre</div>
+                        <div class="role">CICI Faculty</div>
+                    </div>
+                </li>
+
+                <li class="faculty-item">
+                    <img src="AndreaDelosSantos.jpg" alt="Andrea Delos Santos">
+                    <div class="faculty-details">
+                        <div class="name">Ms. Andrea Delos Santos</div>
+                        <div class="role">CICI Staff</div>
+                    </div>
+                </li>
+
+                <li class="faculty-item">
+                    <img src="Michael.jpg" alt="Michael Borcillo">
+                    <div class="faculty-details">
+                        <div class="name">Mr. Michael Borcillo</div>
+                        <div class="role">CICI Staff</div>
+                    </div>
+                </li>
+
+                <li class="faculty-item">
+                    <img src="IanSugatan.jpg" alt="Ian Sugatan">
+                    <div class="faculty-details">
+                        <div class="name">Prof. Ian Sugatan</div>
+                        <div class="role">CICI Faculty</div>
+                    </div>
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- ACTIVITIES -->
+
+        <section id="view-activities" class="view-section">
+
+            <h2 class="section-title">
+                Acquaintance Party Activities
+            </h2>
+
+            <div class="activities">
+
+                <article class="activity-card featured">
+                    <div class="activity-icon">🎉</div>
+                    <div class="date">September 16, 2026</div>
+                    <h3>Rehearsals & Preparation</h3>
+                    <p>
+                        House CICI students in the IT Building for rehearsals,
+                        blocking, costume preparation, and coordination.
+                    </p>
+                </article>
+
+                <article class="activity-card">
+                    <div class="activity-icon">💃</div>
+                    <div class="date">September 17, 2026</div>
+                    <h3>Street Dance Competition</h3>
+                    <p>
+                        CICI participants prepare and perform for the
+                        Street Dance competition.
+                    </p>
+                </article>
+
+                <article class="activity-card">
+                    <div class="activity-icon">🎭</div>
+                    <div class="date">September 17, 2026</div>
+                    <h3>Final Performance Competition</h3>
+                    <p>
+                        Group performances showcasing creativity,
+                        teamwork, preparation, and campus spirit.
+                    </p>
+                </article>
+
+                <article class="activity-card">
+                    <div class="activity-icon">🏆</div>
+                    <div class="date">September 17, 2026</div>
+                    <h3>Laro ng Lahi</h3>
+                    <p>
+                        Traditional Filipino games encouraging camaraderie,
+                        fun, and sportsmanship among faculty, staff, and students.
+                    </p>
+                </article>
+
+                <article class="activity-card">
+                    <div class="activity-icon">🌈</div>
+                    <div class="date">September 18, 2026</div>
+                    <h3>LGBTQIA+ Activities</h3>
+                    <p>
+                        Activities featuring LGBTQIA+ participants as part
+                        of the Acquaintance Party program.
+                    </p>
+                </article>
+
+                <article class="activity-card">
+                    <div class="activity-icon">👑</div>
+                    <div class="date">September 18, 2026</div>
+                    <h3>Mr. & Ms. Acquaintance</h3>
+                    <p>
+                        Pageant-related activities and participation of
+                        CICI candidates during the celebration.
+                    </p>
+                </article>
+
+                <article class="activity-card">
+                    <div class="activity-icon">🤝</div>
+                    <div class="date">CICI Student Activities</div>
+                    <h3>Teamwork & Coordination</h3>
+                    <p>
+                        Student officers and participants coordinate costumes,
+                        performances, rehearsals, and event requirements.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- STREET DANCE -->
+
+        <section id="view-street" class="view-section">
+
+            <h2 class="section-title">
+                Street Dance Competition
+            </h2>
+
+            <div class="activities">
+
+                <article class="activity-card featured">
+
+                    <div class="activity-icon">💃</div>
+
+                    <div class="date">
+                        September 17, 2026
+                    </div>
+
+                    <h3>
+                        Street Dance Competition
+                    </h3>
+
+                    <p>
+                        CICI participants prepare and perform for the
+                        Street Dance competition.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- FINAL PERFORMANCE -->
+
+        <section id="view-final" class="view-section">
+
+            <h2 class="section-title">
+                Final Performance Competition
+            </h2>
+
+            <div class="activities">
+
+                <article class="activity-card featured">
+
+                    <div class="activity-icon">🎭</div>
+
+                    <div class="date">
+                        September 17, 2026
+                    </div>
+
+                    <h3>
+                        Final Performance Competition
+                    </h3>
+
+                    <p>
+                        Group performances showcasing creativity,
+                        teamwork, preparation, and campus spirit.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- LARO NG LAHI -->
+
+        <section id="view-laro" class="view-section">
+
+            <h2 class="section-title">
+                Laro ng Lahi
+            </h2>
+
+            <div class="activities">
+
+                <article class="activity-card featured">
+
+                    <div class="activity-icon">🏆</div>
+
+                    <div class="date">
+                        September 17, 2026
+                    </div>
+
+                    <h3>
+                        Laro ng Lahi
+                    </h3>
+
+                    <p>
+                        Traditional Filipino games encouraging camaraderie,
+                        fun, and sportsmanship among faculty, staff, and students.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- LGBTQIA -->
+
+        <section id="view-lgbtq" class="view-section">
+
+            <h2 class="section-title">
+                LGBTQIA+ Activities
+            </h2>
+
+            <div class="activities">
+
+                <article class="activity-card featured">
+
+                    <div class="activity-icon">🌈</div>
+
+                    <div class="date">
+                        September 18, 2026
+                    </div>
+
+                    <h3>
+                        LGBTQIA+ Activities
+                    </h3>
+
+                    <p>
+                        Activities featuring LGBTQIA+ participants as part
+                        of the Acquaintance Party program.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- MR MS -->
+
+        <section id="view-mrms" class="view-section">
+
+            <h2 class="section-title">
+                Mr. & Ms. Acquaintance
+            </h2>
+
+            <div class="activities">
+
+                <article class="activity-card featured">
+
+                    <div class="activity-icon">👑</div>
+
+                    <div class="date">
+                        September 18, 2026
+                    </div>
+
+                    <h3>
+                        Mr. & Ms. Acquaintance
+                    </h3>
+
+                    <p>
+                        Pageant-related activities and participation of
+                        CICI candidates during the celebration.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- DOCUMENTATION -->
+
+        <section id="view-documentation" class="view-section documentation">
+
+            <h2 class="section-title">
+                Acquaintance Party Activity Documentation
+            </h2>
+
+            <div class="doc-intro">
+
+                <strong>📸 Photo Documentation</strong>
+
+                <br>
+
+                Click the Google Drive icon on any card below
+                to view the official event photos and media folders
+                directly on Google Drive.
+
+            </div>
+
+
+            <div class="doc-grid">
+
+                <article class="doc-card">
+
+                    <div class="doc-photo">
+
+                        <a
+                            href="https://drive.google.com/drive/folders/11W66A2_YHlHcSXVO52wJDMYMYaKO3vIN?usp=sharing"
+                            target="_blank"
+                            class="drive-btn">
+
+                            <svg viewBox="0 0 87.3 78"
+                                xmlns="http://www.w3.org/2000/svg">
+
+                                <path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/>
+                                <path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0-1.2 4.5h27.5z" fill="#00ac47"/>
+                                <path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/>
+                                <path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.55-1.2h-18.4c-1.65 0-3.2.45-4.55 1.2z" fill="#00832d"/>
+                                <path d="m59.8 53h27.5c0-1.55-.4-3.1-1.2-4.5l-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8z" fill="#ffba00"/>
+                                <path d="m16.1 76.8c1.35.8 2.9 1.2 4.55 1.2h52.9c1.65 0 3.2-.45 4.55-1.2l-13.75-23.8h-34.5z" fill="#2684fc"/>
+
+                            </svg>
+
+                        </a>
+
+                    </div>
+
+                    <div class="doc-content">
+
+                        <div class="date">
+                            September 16, 2026
+                        </div>
+
+                        <h3>
+                            Rehearsals & Preparation
+                        </h3>
+
+                        <p>
+                            CICI students during rehearsals,
+                            blocking, costume preparation,
+                            and coordination in the IT building.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="doc-card">
+
+                    <div class="doc-photo">
+
+                        <a
+                            href="hhttps://drive.google.com/drive/folders/1tOP8LxU9olEcaHyQWpjPJWuojrdg6Q1g?usp=drive_link"
+                            target="_blank"
+                            class="drive-btn">
+
+                            <svg viewBox="0 0 87.3 78"
+                                xmlns="http://www.w3.org/2000/svg">
+
+                                <path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/>
+                                <path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0-1.2 4.5h27.5z" fill="#00ac47"/>
+                                <path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/>
+                                <path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.55-1.2h-18.4c-1.65 0-3.2.45-4.55 1.2z" fill="#00832d"/>
+                                <path d="m59.8 53h27.5c0-1.55-.4-3.1-1.2-4.5l-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8z" fill="#ffba00"/>
+                                <path d="m16.1 76.8c1.35.8 2.9 1.2 4.55 1.2h52.9c1.65 0 3.2-.45 4.55-1.2l-13.75-23.8h-34.5z" fill="#2684fc"/>
+
+                            </svg>
+
+                        </a>
+
+                    </div>
+
+                    <div class="doc-content">
+
+                        <div class="date">
+                            September 17, 2026
+                        </div>
+
+                        <h3>
+                            Street Dance Competition
+                        </h3>
+
+                        <p>
+                            High-energy Street Dance performances
+                            showcasing CICI participants' rhythm
+                            and teamwork.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="doc-card">
+
+                    <div class="doc-photo">
+
+                        <a
+                            href="https://drive.google.com/drive/folders/1xGQahyYY95wyd0rz5K8V_Pi7QbUMorwv?usp=drive_link"
+                            target="_blank"
+                            class="drive-btn">
+
+                            <svg viewBox="0 0 87.3 78"
+                                xmlns="http://www.w3.org/2000/svg">
+
+                                <path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/>
+                                <path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0-1.2 4.5h27.5z" fill="#00ac47"/>
+                                <path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/>
+                                <path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.55-1.2h-18.4c-1.65 0-3.2.45-4.55 1.2z" fill="#00832d"/>
+                                <path d="m59.8 53h27.5c0-1.55-.4-3.1-1.2-4.5l-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8z" fill="#ffba00"/>
+                                <path d="m16.1 76.8c1.35.8 2.9 1.2 4.55 1.2h52.9c1.65 0 3.2-.45 4.55-1.2l-13.75-23.8h-34.5z" fill="#2684fc"/>
+
+                            </svg>
+
+                        </a>
+
+                    </div>
+
+                    <div class="doc-content">
+
+                        <div class="date">
+                            September 17, 2026
+                        </div>
+
+                        <h3>
+                            Final Performance Competition
+                        </h3>
+
+                        <p>
+                            Culminating group performance demonstrating
+                            creativity, talent, and departmental unity.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="doc-card">
+
+                    <div class="doc-photo">
+
+                        <a
+                            href="https://drive.google.com/drive/folders/14AJ12Flgxhz0trd7-qlQS100cuinrvCp?usp=drive_link"
+                            target="_blank"
+                            class="drive-btn">
+
+                            <svg viewBox="0 0 87.3 78"
+                                xmlns="http://www.w3.org/2000/svg">
+
+                                <path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/>
+                                <path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0-1.2 4.5h27.5z" fill="#00ac47"/>
+                                <path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/>
+                                <path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.55-1.2h-18.4c-1.65 0-3.2.45-4.55 1.2z" fill="#00832d"/>
+                                <path d="m59.8 53h27.5c0-1.55-.4-3.1-1.2-4.5l-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8z" fill="#ffba00"/>
+                                <path d="m16.1 76.8c1.35.8 2.9 1.2 4.55 1.2h52.9c1.65 0 3.2-.45 4.55-1.2l-13.75-23.8h-34.5z" fill="#2684fc"/>
+
+                            </svg>
+
+                        </a>
+
+                    </div>
+
+                    <div class="doc-content">
+
+                        <div class="date">
+                            September 17, 2026
+                        </div>
+
+                        <h3>
+                            Laro ng Lahi
+                        </h3>
+
+                        <p>
+                            Traditional Filipino games played by faculty,
+                            staff, and students, fostering camaraderie
+                            and school spirit.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="doc-card">
+
+                    <div class="doc-photo">
+
+                        <a
+                            href="https://drive.google.com/drive/folders/15YpmETtD98kbrdPbRv6LsVk6EDHJu7n1?usp=drive_link"
+                            target="_blank"
+                            class="drive-btn">
+
+                            <svg viewBox="0 0 87.3 78"
+                                xmlns="http://www.w3.org/2000/svg">
+
+                                <path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/>
+                                <path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0-1.2 4.5h27.5z" fill="#00ac47"/>
+                                <path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/>
+                                <path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.55-1.2h-18.4c-1.65 0-3.2.45-4.55 1.2z" fill="#00832d"/>
+                                <path d="m59.8 53h27.5c0-1.55-.4-3.1-1.2-4.5l-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8z" fill="#ffba00"/>
+                                <path d="m16.1 76.8c1.35.8 2.9 1.2 4.55 1.2h52.9c1.65 0 3.2-.45 4.55-1.2l-13.75-23.8h-34.5z" fill="#2684fc"/>
+
+                            </svg>
+
+                        </a>
+
+                    </div>
+
+                    <div class="doc-content">
+
+                        <div class="date">
+                            September 18, 2026
+                        </div>
+
+                        <h3>
+                            LGBTQIA+ Activities
+                        </h3>
+
+                        <p>
+                            Inclusive events celebrating diversity,
+                            equality, and pride across the campus.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="doc-card">
+
+                    <div class="doc-photo">
+
+                        <a
+                            href="https://drive.google.com/drive/folders/1Ljmwfsn5erjvVLoHEHcleOmkiak5YtVg?usp=drive_link"
+                            target="_blank"
+                            class="drive-btn">
+
+                            <svg viewBox="0 0 87.3 78"
+                                xmlns="http://www.w3.org/2000/svg">
+
+                                <path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/>
+                                <path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0-1.2 4.5h27.5z" fill="#00ac47"/>
+                                <path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/>
+                                <path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.55-1.2h-18.4c-1.65 0-3.2-.45-4.55 1.2z" fill="#00832d"/>
+                                <path d="m59.8 53h27.5c0-1.55-.4-3.1-1.2-4.5l-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8z" fill="#ffba00"/>
+                                <path d="m16.1 76.8c1.35.8 2.9 1.2 4.55 1.2h52.9c1.65 0 3.2-.45 4.55-1.2l-13.75-23.8h-34.5z" fill="#2684fc"/>
+
+                            </svg>
+
+                        </a>
+
+                    </div>
+
+                    <div class="doc-content">
+
+                        <div class="date">
+                            September 18, 2026
+                        </div>
+
+                        <h3>
+                            Mr. & Ms. Acquaintance
+                        </h3>
+
+                        <p>
+                            Pageant showcase celebrating the poise,
+                            intelligence, and charm of the CICI candidates.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="doc-card">
+
+                    <div class="doc-photo">
+
+                        <a
+                            href="https://drive.google.com/drive/folders/1_9lqYdfAVgAytq5PTq--vIOyk52-0FnS?usp=drive_link"
+                            target="_blank"
+                            class="drive-btn">
+
+                            <svg viewBox="0 0 87.3 78"
+                                xmlns="http://www.w3.org/2000/svg">
+
+                                <path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/>
+                                <path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0-1.2 4.5h27.5z" fill="#00ac47"/>
+                                <path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/>
+                                <path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.55-1.2h-18.4c-1.65 0-3.2-.45-4.55 1.2z" fill="#00832d"/>
+                                <path d="m59.8 53h27.5c0-1.55-.4-3.1-1.2-4.5l-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8z" fill="#ffba00"/>
+                                <path d="m16.1 76.8c1.35.8 2.9 1.2 4.55 1.2h52.9c1.65 0 3.2-.45 4.55-1.2l-13.75-23.8h-34.5z" fill="#2684fc"/>
+
+                            </svg>
+
+                        </a>
+
+                    </div>
+
+                    <div class="doc-content">
+
+                        <div class="date">
+                            CICI Acquaintance Party
+                        </div>
+
+                        <h3>
+                            CICI Student Activities
+                        </h3>
+
+                        <p>
+                            Behind-the-scenes teamwork, officer leadership,
+                            costume design, and student participation.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <footer>
+
+        <p>
+            &copy; 2026
+            <span>
+                Iloilo State University of Fisheries Science and Technology
+            </span>
+            Campus Directory & Acquaintance Party Activities.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+</main>
+
+
+<script>
+
+const navLinks = document.querySelectorAll(".nav-link");
+
+const views = document.querySelectorAll(
+    ".directory-home, .view-section"
+);
+
+const topTitle = document.getElementById("topTitle");
+const bannerTitle = document.getElementById("bannerTitle");
+const bannerSubtitle = document.getElementById("bannerSubtitle");
+
+const pageInformation = {
+
+    all:{
+        top:"ISUFST Campus Organizational Directory",
+        title:"Campus Organizational Directory",
+        subtitle:"Leadership, Deans, Faculty Members & Campus Information"
+    },
+
+    university:{
+        top:"ISUFST University Administration",
+        title:"University Level",
+        subtitle:"University leadership and administration"
+    },
+
+    campus:{
+        top:"ISUFST Campus Administration",
+        title:"Campus Level",
+        subtitle:"San Enrique Campus administration"
+    },
+
+    deans:{
+        top:"ISUFST Academic Leadership",
+        title:"Deans of Academic Units",
+        subtitle:"Academic deans and college leadership"
+    },
+
+    faculty:{
+        top:"ISUFST CICI Faculty & Staff",
+        title:"CICI Faculty & Staff",
+        subtitle:"College of Informatics and Computing Innovations"
+    },
+
+    activities:{
+        top:"ISUFST Acquaintance Party",
+        title:"Acquaintance Party Activities",
+        subtitle:"CICI student activities and campus events"
+    },
+
+    street:{
+        top:"ISUFST Street Dance Competition",
+        title:"Street Dance Competition",
+        subtitle:"CICI Street Dance competition activities"
+    },
+
+    final:{
+        top:"ISUFST Final Performance",
+        title:"Final Performance Competition",
+        subtitle:"CICI final performance activities"
+    },
+
+    laro:{
+        top:"ISUFST Laro ng Lahi",
+        title:"Laro ng Lahi",
+        subtitle:"Traditional Filipino games and campus activities"
+    },
+
+    lgbtq:{
+        top:"ISUFST LGBTQIA+ Activities",
+        title:"LGBTQIA+ Activities",
+        subtitle:"Inclusive campus activities and participation"
+    },
+
+    mrms:{
+        top:"ISUFST Mr. & Ms. Acquaintance",
+        title:"Mr. & Ms. Acquaintance",
+        subtitle:"CICI candidates and pageant activities"
+    },
+
+    documentation:{
+        top:"ISUFST Activity Documentation",
+        title:"Activity Documentation",
+        subtitle:"Acquaintance Party photos and media"
+    }
+
+};
+
+
+function showView(viewName){
+
+    views.forEach(view => {
+        view.classList.remove("active");
+    });
+
+    const selectedView = document.getElementById(
+        "view-" + viewName
+    );
+
+    if(viewName === "all"){
+        document.getElementById("view-all").classList.add("active");
+    }
+    else if(selectedView){
+        selectedView.classList.add("active");
+    }
+
+    navLinks.forEach(link => {
+        link.classList.remove("active");
+
+        if(link.dataset.view === viewName){
+            link.classList.add("active");
+        }
+    });
+
+    const info = pageInformation[viewName];
+
+    if(info){
+
+        topTitle.textContent = info.top;
+
+        bannerTitle.textContent = info.title;
+
+        bannerSubtitle.textContent = info.subtitle;
+
+    }
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+navLinks.forEach(link => {
+
+    link.addEventListener("click", function(event){
+
+        event.preventDefault();
+
+        const view = this.dataset.view;
+
+        showView(view);
+
+    });
+
+});
+
+
+</script>
+
+</body>
+</html>
